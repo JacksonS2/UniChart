@@ -1,0 +1,20 @@
+<div class="outer_container">
+  <div class="container">
+    <div>
+      <ion-label>Email</ion-label>
+      <ion-input [(ngModel)]="email"></ion-input>
+    </div>
+
+    <div>
+      <ion-label>Password</ion-label>
+      <ion-input type="password" [(ngModel)]="password"></ion-input>
+    </div>
+    <div>
+      <ion-button (click)="createAccount()">Create Account</ion-button>
+    </div>
+    <div>
+      <ion-button color="medium" (click)="back()">Back</ion-button>
+    </div>
+    
+  </div>
+</div>

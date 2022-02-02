@@ -1,0 +1,20 @@
+.login_input{
+    display: grid;
+    max-width: 600 px;
+    text-align: center;
+
+}
+.container{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    text-align: center;
+}
+.outer_container{
+    display:grid;
+    text-align: center;
+    align-items: center;
+    height: 100%;
+    
+}
+
+
