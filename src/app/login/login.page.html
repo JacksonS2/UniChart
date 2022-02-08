@@ -1,0 +1,20 @@
+<div class="outer_container">
+  <div class="container">
+    <div>
+      <ion-label>Username</ion-label>
+      <ion-input [(ngModel)]="username"></ion-input>
+    </div>
+
+    <div>
+      <ion-label>Password</ion-label>
+      <ion-input type="password" [(ngModel)]="password"></ion-input>
+    </div>
+
+    <div>
+      <ion-button (click)="login()">Login</ion-button>
+    </div>
+    <div>
+      <ion-button color="medium"(click)="createAccountNav()">Create Account</ion-button>
+    </div>
+  </div>
+</div>
