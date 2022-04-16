@@ -1,0 +1,47 @@
+<div class="outer_container">
+    <div class="container">
+        <ion-card class="infoField">
+            <ion-card-header>
+                <ion-card-title>Your Profile</ion-card-title>
+                <div style="text-align: center;background-color:red;border-radius: 10000px; margin: 20px auto; overflow:hidden; height:300px; width: 300px;">
+                    <img width="100%" height="100%" src="{{userProfile.profilePictureURL}}">
+                </div>
+            </ion-card-header>
+            <ion-card-content>
+                <div>
+                    <ion-label class="largeSize">Grade</ion-label>
+                    <ion-input [(ngModel)]="userProfile.grade"></ion-input>
+                </div>
+                <div>
+                    <ion-label class="largeSize">First Name</ion-label>
+                    <ion-input [(ngModel)]="userProfile.firstName"></ion-input>
+                </div>
+                <div>
+                    <ion-label class="largeSize">Last Name</ion-label>
+                    <ion-input [(ngModel)]="userProfile.lastName"> </ion-input>
+                </div> 
+                <div>
+                    <ion-label class="largeSize">Biography</ion-label>
+                    <ion-input [(ngModel)]="userProfile.biography"></ion-input>
+                </div>
+                <div>
+                    <ion-label class="largeSize">Duty Title</ion-label>
+                    <ion-input [(ngModel)]="userProfile.dutyTitle"></ion-input>
+                </div>
+                <div>
+                    <ion-label class="largeSize">Profile Picture URL</ion-label>
+                    <ion-input [(ngModel)]="userProfile.profilePictureURL"></ion-input>
+                </div>
+                <div>
+                    <ion-label class="largeSize">Unit Designation</ion-label>
+                    <ion-input [(ngModel)]="userProfile.unitDesignation"></ion-input>
+                </div>
+            </ion-card-content>
+        </ion-card>
+        <div>
+            <ion-button color="danger" (click)="logout()">Logout</ion-button>
+            <ion-button color="primary" (click)="home_page()">Home Page</ion-button>
+            <ion-button color="success" (click)="save()">Save</ion-button>
+        </div>
+    </div>
+</div>

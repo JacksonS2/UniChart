@@ -1,20 +1,130 @@
 <div class="outer_container">
   <div class="container">
-    <div>
-      <ion-label>Email</ion-label>
-      <ion-input [(ngModel)]="email"></ion-input>
-    </div>
+    <ion-card class="infoField">
+      <ion-card-header>
+        <ion-card-title>Wing Information</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label>Wing</ion-label>
+          <ion-select placeholder="Select One" [(ngModel)]="wingName">
+            <ion-select-option value="cw">Det 867</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+    <ion-card class="infoField" *ngIf="wingName">
+      <ion-card-header>
+        <ion-card-title>Group Information</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label>Group</ion-label>
+          <ion-select placeholder="Select One" [(ngModel)]="groupName">
+            <ion-select-option value="g1">1</ion-select-option>
+            <ion-select-option value="g2">2</ion-select-option>
+            <ion-select-option value="">N/A</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+    <ion-card class="infoField" *ngIf="groupName">
+      <ion-card-header>
+        <ion-card-title>Squadron</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label>Squadron</ion-label>
+          <ion-select placeholder="Select One" [(ngModel)]="squadronName">
+            <ion-select-option value="s1">1</ion-select-option>
+            <ion-select-option value="s2">2</ion-select-option>
+            <ion-select-option value="s3">3</ion-select-option>
+            <ion-select-option value="s4">4</ion-select-option>
+            <ion-select-option value="">N/A</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+    <ion-card class="infoField" *ngIf="squadronName">
+      <ion-card-header>
+        <ion-card-title>Flight</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label>Flight</ion-label>
+          <ion-select placeholder="Select One" [(ngModel)]="flightName">
+            <ion-select-option value="aFlight">Alpha</ion-select-option>
+            <ion-select-option value="bFlight">Bravo</ion-select-option>
+            <ion-select-option value="cFlight">Charlie</ion-select-option>
+            <ion-select-option value="dFlight">Delta</ion-select-option>
+            <ion-select-option value="wFlight">Whiskey</ion-select-option>
+            <ion-select-option value="xFlight">Xray</ion-select-option>
+            <ion-select-option value="yFlight">Yankee</ion-select-option>
+            <ion-select-option value="">N/A</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item><ion-label>Are you a member?</ion-label>
+          <ion-checkbox [(ngModel)] ="member"></ion-checkbox>
+        
+        </ion-item>
 
-    <div>
-      <ion-label>Password</ion-label>
-      <ion-input type="password" [(ngModel)]="password"></ion-input>
-    </div>
-    <div>
-      <ion-button (click)="createAccount()">Create Account</ion-button>
-    </div>
-    <div>
-      <ion-button color="medium" (click)="back()">Back</ion-button>
-    </div>
-    
+      </ion-card-content>
+    </ion-card>
+    <ion-card class="infoField">
+      <ion-card-header>
+        <ion-card-title>Member Information</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <div>
+          <ion-label>Grade</ion-label>
+          <ion-input [(ngModel)]="userProfile.grade"></ion-input>
+        </div>
+        <div>
+          <ion-label>First Name</ion-label>
+          <ion-input [(ngModel)]="userProfile.firstName"></ion-input>
+        </div>
+        <div>
+          <ion-label>Last Name</ion-label>
+          <ion-input [(ngModel)]="userProfile.lastName"></ion-input>
+        </div>
+        <div>
+          <ion-label>Biography</ion-label>
+          <ion-input [(ngModel)]="userProfile.biography"></ion-input>
+        </div>
+        <div>
+          <ion-label>Duty Title</ion-label>
+          <ion-input [(ngModel)]="userProfile.dutyTitle"></ion-input>
+        </div>
+        <div>
+          <ion-label>Profile Picture URL</ion-label>
+          <ion-input [(ngModel)]="userProfile.profilePictureURL"></ion-input>
+        </div>
+        <div>
+          <ion-label>Unit Designation</ion-label>
+          <ion-input [(ngModel)]="userProfile.unitDesignation"></ion-input>
+        </div>
+      </ion-card-content>
+    </ion-card>
+    <ion-card class="infoField">
+      <ion-card-header>
+        <ion-card-title>Login Information</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <div>
+          <ion-label>Email</ion-label>
+          <ion-input type="email" [(ngModel)]="userProfile.email"></ion-input>
+        </div>
+        <div>
+          <ion-label>Password</ion-label>
+          <ion-input type="password" [(ngModel)]="password"></ion-input>
+        </div>
+        <div>
+          <ion-button (click)="createAccount()">Create Account</ion-button>
+        </div>
+        <div>
+          <ion-button color="medium" (click)="back()">Back</ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
   </div>
 </div>
