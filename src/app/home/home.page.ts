@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
+import { IonLabel } from '@ionic/angular';
 import { TreeNode } from 'primeng/api';
 import { OrganizationChart } from 'primeng/organizationchart';
 import { logWarnings } from 'protractor/built/driverProviders';
@@ -22,6 +23,9 @@ export class HomePage {
     fs.collection("database").doc("database").get().subscribe((data) => {
       this.processData(data.data() as any)
     })
+  }
+  onNodeSelect(event){
+    console.log(event)
   }
   logout() {
     this.auth.signOut().then(() => {
@@ -74,8 +78,9 @@ export class HomePage {
       for (const memberName in wing.staff) {
         const member: IMember = wing.staff[memberName];
         const memberNode: TreeNode = {
-          label: `${member.dutyTitle} ${member.grade} ${member.firstName} ${member.lastName}`,
-          type: 'member'
+          label: `${member.dutyTitle} ${member.firstName} ${member.lastName}`,
+          type: 'member',
+          data: member
         }
         staffMembers.push(memberNode);
       }
@@ -107,23 +112,60 @@ export class HomePage {
       const squadrons = group.squadrons;
       const squadronsNode: TreeNode[] = []
 
-        for (const squadronName in squadrons) {
-          squadronsNode.push({
-            label: squadronName,
+      for (const squadronName in squadrons) {
+        squadronsNode.push({
+          label: squadronName,
+          expanded: true,
+          children: [{
+            label: "Staff",
             expanded: true,
-            children: [{
-              label: "Staff",
-              expanded: true,
-              children: getStaff(squadrons[squadronName])
-            },
-            {
-              label: "Flights",
-              expanded: true,
-              children: []
-            }]
-          })
+            children: getStaff(squadrons[squadronName])
+          },
+          {
+            label: "Flights",
+            expanded: true,
+            children: getFlights(squadrons[squadronName])
+          }]
+        })
+      }
+      return (squadronsNode)
+    }
+    function getFlights(squadron) {
+      const flights = squadron.flights;
+      const flightsNode: TreeNode[] = []
+
+      for (const flightName in flights) {
+        flightsNode.push({
+          label: flightName,
+          expanded: true,
+          children: [{
+            label: "Staff",
+            expanded: true,
+            children: getStaff(flights[flightName])
+          },
+          {
+            label: "Member",
+            expanded: true,
+            children: getMember(flights[flightName])
+          }]
+        })
+
+      }
+    return(flightsNode)
+    }
+    function getMember(flight){
+      const flightMembers: TreeNode[] = []
+      for (const memberName in flight.members) {
+        const member: IMember = flight.members[memberName];
+        const memberNode: TreeNode = {
+          label: `${member.dutyTitle} ${member.firstName} ${member.lastName}`,
+          type: 'member',
+          data: member
         }
-        return (squadronsNode)
+        flightMembers.push(memberNode);
+      }
+      return (flightMembers)
+      return
     }
   }
 }

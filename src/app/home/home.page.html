@@ -1,10 +1,19 @@
 <div>
 
-  <ion-card>
-    <p-organizationChart [value]="orgChart"></p-organizationChart>
+  <ion-card style="max-width: 100%; max-height: 80vh; overflow: auto;">
+    <p-organizationChart class="orgChart" [value]="orgChart" styleClass="orgChart" (onNodeSelect)="onNodeSelect($event)">
+      <ng-template let-node pTemplate="member">
+        <div class="node-content">
+          <img src="{{node.data.profilePictureURL}}" width="200px">
+          <ion-label>
+            <p>{{node.data.grade}} {{node.data.firstName}} {{node.data.lastName}}</p>
+          </ion-label>
+        </div>
+      </ng-template>
+    </p-organizationChart>
   </ion-card>
 
   <ion-button color="danger" (click)="logout()">Logout</ion-button>
 
-  <ion-button color="blue" (click)="profile()">Profile Page</ion-button>>
+  <ion-button color="blue" (click)="profile()">Profile Page</ion-button>
 </div>

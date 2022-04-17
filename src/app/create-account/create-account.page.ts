@@ -42,9 +42,9 @@ export class CreateAccountPage {
     this.fs.doc
   }
   createLogin() {
-    this.enteredData();
     this.auth.createUserWithEmailAndPassword(this.userProfile.email, this.password).then(data => {
       if (data.user) {
+        console.log("added user")
         this.enteredData();
       }
     }).catch(async error => {
@@ -128,6 +128,7 @@ export class CreateAccountPage {
       staffLevel.staff.push(this.userProfile)
     }
     this.updateDatabase(this.database)
+    console.log("added user")
   }
 
   updateDatabase(database){
